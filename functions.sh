@@ -57,7 +57,7 @@ function claimRewards {
     getSequence
     s1=$((s+1))
     printCyan "Withdraw to $wallet_address" && sleep 2
-    nibid tx distribution withdraw-all-rewards --from wallet --chain-id nibiru-itn-1 --gas-prices 0.1unibi --gas-adjustment 1.5 --gas auto -s $s1 -y && tax
+    nibid tx distribution withdraw-all-rewards --from wallet --chain-id nibiru-itn-1 --gas-prices 0.1unibi --gas-adjustment 1.5 --gas auto -s $s1 -y
     setSequence $s1
 }
 
@@ -77,7 +77,7 @@ function delegateTo {
     getSequence
     s1=$((s+1))
     printCyan "Delegate to other validator" && sleep 2
-    nibid tx staking delegate ${1} 10000unibi --from wallet --chain-id nibiru-itn-1 --gas-prices 0.1unibi --gas-adjustment 1.5 --gas auto -s $s1 -y && tax
+    nibid tx staking delegate ${1} 10000unibi --from wallet --chain-id nibiru-itn-1 --gas-prices 0.1unibi --gas-adjustment 1.5 --gas auto -s $s1 -y
     setSequence $s1
 }
 
@@ -86,6 +86,6 @@ function redelegateTo {
     getSequence
     s1=$((s+1))
     printCyan "Redele to other validator: ${1}"
-    nibid tx staking redelegate $(nibid keys show wallet --bech val -a) ${1} 10000unibi --from wallet --chain-id nibiru-itn-1 --gas-prices 0.1unibi --gas-adjustment 1.5 --gas auto -s $s1 -y && tax
+    nibid tx staking redelegate $(nibid keys show wallet --bech val -a) ${1} 10000unibi --from wallet --chain-id nibiru-itn-1 --gas-prices 0.1unibi --gas-adjustment 1.5 --gas auto -s $s1 -y
     setSequence $s1
 }
