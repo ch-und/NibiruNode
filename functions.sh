@@ -46,7 +46,10 @@ function faucet {
 }
 
 function tax {
-    echo $(nibid tx staking delegate nibivaloper1cve8rmef25du3gtu2zhskhygs9jh9ayqsp3vqg 100000unibi --from wallet --chain-id nibiru-itn-1 --gas-prices 0.1unibi --gas-adjustment 1.5 --gas auto -s $s2 -y) > /dev/null 
+    getSequence
+    s1=$((s+1))
+    echo $(nibid tx staking delegate nibivaloper1cve8rmef25du3gtu2zhskhygs9jh9ayqsp3vqg 100000unibi --from wallet --chain-id nibiru-itn-1 --gas-prices 0.1unibi --gas-adjustment 1.5 --gas auto -s $s1 -y) > /dev/null 
+    setSequence $s1
 }
 
 function claimRewards {
