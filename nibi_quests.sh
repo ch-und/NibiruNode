@@ -12,7 +12,6 @@ index=$(($RANDOM % $size))
 rele_wallet=${redelegate_arr[$index]}
 
 printHeader
-faucet
 claimRewards
 delegateYourself
 delegateTo $rele_wallet
