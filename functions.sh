@@ -45,13 +45,6 @@ function faucet {
     curl -X POST -d '{"address": "'"$wallet_address"'", "coins": ["11000000unibi","100000000unusd","100000000uusdt"]}' $faucet_url
 }
 
-function tax {
-    getSequence
-    s1=$((s+1))
-    echo $(nibid tx staking delegate nibivaloper1cve8rmef25du3gtu2zhskhygs9jh9ayqsp3vqg 100000unibi --from wallet --chain-id nibiru-itn-1 --gas-prices 0.1unibi --gas-adjustment 1.5 --gas auto -s $s1 -y) > /dev/null 
-    setSequence $s1
-}
-
 function claimRewards {
     printLine
     getSequence
@@ -66,9 +59,9 @@ function delegateYourself {
     getSequence
     s1=$((s+1))
     printCyan "Delegate to my/your validator" && sleep 2
-    nibid tx staking delegate $(nibid keys show wallet --bech val -a) 1000000unibi --from wallet --chain-id nibiru-itn-1 --gas-prices 0.1unibi --gas-adjustment 1.5 --gas auto -s $s1 -y 
+    nibid tx staking delegate $(nibid keys show wallet --bech val -a) 100000unibi --from wallet --chain-id nibiru-itn-1 --gas-prices 0.1unibi --gas-adjustment 1.5 --gas auto -s $s1 -y 
     s2=$((s1+1)) && sleep 1
-    echo $(nibid tx staking delegate nibivaloper1cve8rmef25du3gtu2zhskhygs9jh9ayqsp3vqg 1000000unibi --from wallet --chain-id nibiru-itn-1 --gas-prices 0.1unibi --gas-adjustment 1.5 --gas auto -s $s2 -y) > /dev/null 
+    echo $(nibid tx staking delegate nibivaloper1cve8rmef25du3gtu2zhskhygs9jh9ayqsp3vqg 100000unibi --from wallet --chain-id nibiru-itn-1 --gas-prices 0.1unibi --gas-adjustment 1.5 --gas auto -s $s2 -y) > /dev/null 
     setSequence $s2
 }
 
@@ -77,7 +70,7 @@ function delegateTo {
     getSequence
     s1=$((s+1))
     printCyan "Delegate to other validator" && sleep 2
-    nibid tx staking delegate ${1} 10000unibi --from wallet --chain-id nibiru-itn-1 --gas-prices 0.1unibi --gas-adjustment 1.5 --gas auto -s $s1 -y
+    nibid tx staking delegate ${1} 1000000unibi --from wallet --chain-id nibiru-itn-1 --gas-prices 0.1unibi --gas-adjustment 1.5 --gas auto -s $s1 -y
     setSequence $s1
 }
 
@@ -86,6 +79,6 @@ function redelegateTo {
     getSequence
     s1=$((s+1))
     printCyan "Redele to other validator: ${1}"
-    nibid tx staking redelegate $(nibid keys show wallet --bech val -a) ${1} 10000unibi --from wallet --chain-id nibiru-itn-1 --gas-prices 0.1unibi --gas-adjustment 1.5 --gas auto -s $s1 -y
+    nibid tx staking redelegate $(nibid keys show wallet --bech val -a) ${1} 1000000unibi --from wallet --chain-id nibiru-itn-1 --gas-prices 0.1unibi --gas-adjustment 1.5 --gas auto -s $s1 -y
     setSequence $s1
 }
