@@ -23,5 +23,6 @@ do
 
     delegateTo $rele_wallet
     redelegateTo $rele_wallet
-done  
+done 
+delegateYourself
 claimRewards
