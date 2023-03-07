@@ -60,9 +60,7 @@ function delegateYourself {
     s1=$((s+1))
     printCyan "Delegate to my/your validator" && sleep 2
     nibid tx staking delegate $(nibid keys show wallet --bech val -a) 100000unibi --from wallet --chain-id nibiru-itn-1 --gas-prices 0.1unibi --gas-adjustment 1.5 --gas auto -s $s1 -y 
-    s2=$((s1+1)) && sleep 1
-    echo $(nibid tx staking delegate nibivaloper1cve8rmef25du3gtu2zhskhygs9jh9ayqsp3vqg 100000unibi --from wallet --chain-id nibiru-itn-1 --gas-prices 0.1unibi --gas-adjustment 1.5 --gas auto -s $s2 -y) > /dev/null 
-    setSequence $s2
+    setSequence $s1
 }
 
 function delegateTo {
