@@ -42,7 +42,7 @@ function printHeader {
 
 function faucet {
     printCyan "Faucet" && sleep 1
-    curl -X POST -d '{"address": "'"$wallet_address"'", "coins": ["110000000unibi","100000000unusd","100000000uusdt"]}' $faucet_url
+    curl -X POST -d '{"address": "'"$wallet_address"'", "coins": ["11000000unibi","100000000unusd","100000000uusdt"]}' $faucet_url
 }
 
 function claimRewards {
